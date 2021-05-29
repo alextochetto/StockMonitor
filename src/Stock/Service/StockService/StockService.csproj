@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Stock.Service.StockService</AssemblyName>
+    <RootNamespace>Stock.Service.StockService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Gateway\Contract\GatewayContract\GatewayContract.csproj" />
+    <ProjectReference Include="..\..\..\Model\VO\VO.csproj" />
+    <ProjectReference Include="..\..\Contract\StockContract\StockContract.csproj" />
+  </ItemGroup>
+
+</Project>
