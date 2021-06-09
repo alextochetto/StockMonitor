@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gateway\Infrastructure\GatewayLocator\GatewayLocator.csproj" />
+    <ProjectReference Include="..\Infrastructure\Locator\InfrastructureLocator\InfrastructureLocator.csproj" />
     <ProjectReference Include="..\Stock\Infrastructure\StockLocator\StockLocator.csproj" />
   </ItemGroup>
 

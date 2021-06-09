@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Stock.Contract.GatewayContract;
 using Stock.Contract.StockContract;
+using Stock.Infrastructure.ConfigurationContract;
 using Stock.VO.Stock;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace Stock.Service.StockService
     public class StockMonitorService : IStockMonitorService
     {
         private readonly IGatewayServiceProvider _gatewayServiceProvider;
+        private readonly IConfigurationServiceProvider _configurationServiceProvider;
 
-        public StockMonitorService(IGatewayServiceProvider gatewayServiceProvider)
+        public StockMonitorService(IGatewayServiceProvider gatewayServiceProvider, IConfigurationServiceProvider configurationServiceProvider)
         {
             _gatewayServiceProvider = gatewayServiceProvider;
+            _configurationServiceProvider = configurationServiceProvider;
         }
 
         public async Task Monitor()

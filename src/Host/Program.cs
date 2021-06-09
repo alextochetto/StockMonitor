@@ -44,6 +44,7 @@ namespace GenericHost
             });
             host.ConfigureServices((context, services) =>
             {
+                services.AddInfrastructureServiceLocator();
                 services.AddGatewayServiceLocator();
                 services.AddStockServiceLocator();
                 services.AddHostedService<LifetimeEventsHostedService>();
