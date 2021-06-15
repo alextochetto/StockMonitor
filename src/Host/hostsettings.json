@@ -7,5 +7,8 @@
       "Microsoft": "Information"
     }
   },
-  "environment": "Development"
+  "environment": "Development",
+  "StockUrl": "https://finance.yahoo.com/quote/{0}?p={1}",
+  "StockValue": "/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[5]/div/div/div/div[3]/div[1]/div/span[1]",
+  "StockCompany": "/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[5]/div/div/div/div[2]/div[1]/div[1]/h1"
 }
