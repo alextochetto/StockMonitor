@@ -17,6 +17,10 @@ namespace Stock.Infrastructure.ConfigurationService
 
         public T Get<T>(string key)
         {
+            Type type = typeof(T);
+            if (type.IsClass)
+                return _configuration.GetSection(key).Get<T>();
+            
             //if (this._data.ContainsKey(key))
             //    return (T)Convert.ChangeType(this._data[key], typeof(T));
             return (T)Convert.ChangeType(this._configuration[key], typeof(T));
