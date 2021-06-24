@@ -5,6 +5,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>GenericHost</AssemblyName>
     <RootNamespace>GenericHost</RootNamespace>
+    <UserSecretsId>5d617ed4-f4f5-4e8a-a5d9-5794d6e281ed</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
