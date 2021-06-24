@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Configuration\Contract\ConfigurationContract\ConfigurationContract.csproj" />
     <ProjectReference Include="..\..\Configuration\Service\ConfigurationService\ConfigurationService.csproj" />
+    <ProjectReference Include="..\..\Data\Contract\RepositoryContract\RepositoryContract.csproj" />
+    <ProjectReference Include="..\..\Data\Service\RepositoryServiceSqlServer\RepositoryServiceSqlServer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\StockContract\StockContract.csproj" />
+    <ProjectReference Include="..\..\Contract\StockRepositoryContract\StockRepositoryContract.csproj" />
+    <ProjectReference Include="..\..\Repository\StockRepositorySqlServer\StockRepositorySqlServer.csproj" />
     <ProjectReference Include="..\..\Service\StockService\StockService.csproj" />
   </ItemGroup>
 

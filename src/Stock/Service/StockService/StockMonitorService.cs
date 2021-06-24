@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Stock.Contract.GatewayContract;
 using Stock.Contract.StockContract;
+using Stock.Contract.StockRepositoryContract;
 using Stock.Infrastructure.ConfigurationContract;
 using Stock.VO.Stock;
 using System;
@@ -17,6 +18,11 @@ namespace Stock.Service.StockService
         public StockMonitorService(IGatewayServiceProvider gatewayServiceProvider)
         {
             _gatewayServiceProvider = gatewayServiceProvider;
+        }
+
+        public async Task Validate()
+        {
+            await _gatewayServiceProvider.Get<IStockContentRepository>().CreateTables();
         }
 
         public async Task Monitor()

@@ -5,6 +5,7 @@ namespace Stock.Contract.StockContract
 {
     public interface IStockMonitorService
     {
+        Task Validate();
         Task Monitor();
     }
 }

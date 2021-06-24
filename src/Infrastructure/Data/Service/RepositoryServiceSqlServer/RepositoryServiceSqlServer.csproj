@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Stock.Infrastructure.RepositoryServiceSqlServer</AssemblyName>
+    <RootNamespace>Stock.Infrastructure.RepositoryServiceSqlServer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Configuration\Contract\ConfigurationContract\ConfigurationContract.csproj" />
+    <ProjectReference Include="..\..\Contract\RepositoryContract\RepositoryContract.csproj" />
+  </ItemGroup>
+
+</Project>
