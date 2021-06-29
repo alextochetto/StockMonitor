@@ -1,5 +1,6 @@
 ﻿using Stock.Contract.GatewayContract;
 using Stock.Contract.StockContract;
+using Stock.Contract.StockRepositoryContract;
 using Stock.Infrastructure.ConfigurationContract;
 using Stock.VO.Stock;
 using System;
@@ -20,7 +21,9 @@ namespace Stock.Service.StockService
 
         public async Task<List<Quote>> GetAll()
         {
-            List<Quote> quotes = _gatewayServiceProvider.Get<IConfigurationServiceProvider>().Get<List<Quote>>("Quotes");
+            //List<Quote> quotes = _gatewayServiceProvider.Get<IConfigurationServiceProvider>().Get<List<Quote>>("Quotes");
+            //return await Task.FromResult(quotes);
+            List<Quote> quotes = await _gatewayServiceProvider.Get<IStockContentRepository>().GetAll();
             return await Task.FromResult(quotes);
         }
     }

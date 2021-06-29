@@ -35,6 +35,51 @@ namespace Stock.Infrastructure.RepositoryServiceSqlServer
             }
         }
 
+        public async Task<TReturn> ExecuteScalar<TReturn>(string sql, List<IDbDataParameter> parameters = null)
+        {
+            using (SqlConnection connection = CreateConnectionInternal())
+            {
+                await connection.OpenAsync();
+                using (SqlCommand command = CreateCommandInternal(sql, connection))
+                {
+                    //InsertParameters(command, parameters);
+                    TReturn scalar = ConvertTo<TReturn>(await command.ExecuteScalarAsync());
+                    return scalar;
+                }
+            }
+        }
+
+        public async Task<TReturn> ExecuteScalar<TReturn>(IDbTransaction transaction, string sql, List<IDbDataParameter> parameters = null)
+        {
+            SqlTransaction sqlTransaction = transaction as SqlTransaction;
+            using (SqlCommand command = CreateCommandInternal(sql, sqlTransaction.Connection, sqlTransaction))
+            {
+                //InsertParameters(command, parameters);
+                TReturn scalar = ConvertTo<TReturn>(await command.ExecuteScalarAsync());
+                return (scalar);
+            }
+        }
+
+        public async Task<IDataReader> GetReader(string sql, List<IDbDataParameter> parameters = null)
+        {
+            SqlConnection connection = CreateConnectionInternal();
+            try
+            {
+                await connection.OpenAsync();
+                using (SqlCommand command = CreateCommandInternal(sql, connection))
+                {
+                    //InsertParameters(command, parameters, true);
+                    SqlDataReader reader = await command.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+                    return reader;
+                }
+            }
+            catch
+            {
+                connection.Close();
+                throw;
+            }
+        }
+
         public IDbConnection CreateConnection()
         {
             return (this.CreateConnectionInternal());
@@ -67,31 +112,6 @@ namespace Stock.Infrastructure.RepositoryServiceSqlServer
                 command = new SqlCommand(sql, connection, transaction);
             command.CommandTimeout = 0;
             return command;
-        }
-
-        public async Task<TReturn> ExecuteScalar<TReturn>(string sql, List<IDbDataParameter> parameters = null)
-        {
-            using (SqlConnection connection = CreateConnectionInternal())
-            {
-                await connection.OpenAsync();
-                using (SqlCommand command = CreateCommandInternal(sql, connection))
-                {
-                    //InsertParameters(command, parameters);
-                    TReturn scalar = ConvertTo<TReturn>(await command.ExecuteScalarAsync());
-                    return scalar;
-                }
-            }
-        }
-
-        public async Task<TReturn> ExecuteScalar<TReturn>(IDbTransaction transaction, string sql, List<IDbDataParameter> parameters = null)
-        {
-            SqlTransaction sqlTransaction = transaction as SqlTransaction;
-            using (SqlCommand command = CreateCommandInternal(sql, sqlTransaction.Connection, sqlTransaction))
-            {
-                //InsertParameters(command, parameters);
-                TReturn scalar = ConvertTo<TReturn>(await command.ExecuteScalarAsync());
-                return (scalar);
-            }
         }
 
         private T ConvertTo<T>(object obj)

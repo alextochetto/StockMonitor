@@ -6,4 +6,8 @@
     <RootNamespace>Stock.Contract.StockRepositoryContract</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Model\VO\VO.csproj" />
+  </ItemGroup>
+
 </Project>
