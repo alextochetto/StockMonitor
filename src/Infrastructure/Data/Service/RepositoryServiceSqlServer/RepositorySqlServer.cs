@@ -24,6 +24,17 @@ namespace Stock.Infrastructure.RepositoryServiceSqlServer
             return exist > 0;
         }
 
+        public async Task<long> ExecuteNonQuery(IDbTransaction transaction, string sql, List<IDbDataParameter> parameters = null)
+        {
+            SqlTransaction sqlTransaction = transaction as SqlTransaction;
+            using (SqlCommand command = CreateCommandInternal(sql, sqlTransaction.Connection, sqlTransaction))
+            {
+                //InsertParameters(command, parameters);
+                long affected = await command.ExecuteNonQueryAsync();
+                return affected;
+            }
+        }
+
         public IDbConnection CreateConnection()
         {
             return (this.CreateConnectionInternal());
@@ -37,7 +48,14 @@ namespace Stock.Infrastructure.RepositoryServiceSqlServer
 
         public IDbTransaction CreateTransaction(IDbConnection connection)
         {
-            return (connection.BeginTransaction());
+            return connection.BeginTransaction();
+        }
+
+        public void Commit(IDbTransaction transaction)
+        {
+            if (transaction.Connection.State != ConnectionState.Open)
+                return;
+            transaction.Commit();
         }
 
         private SqlCommand CreateCommandInternal(string sql, SqlConnection connection, SqlTransaction transaction = null)
