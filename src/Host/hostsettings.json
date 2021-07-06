@@ -1,5 +1,6 @@
 {
-  "connectionString": "Data Source=.;Initial Catalog=Stock;Trusted_Connection=false;Persist Security Info=True;User ID=Stock;Password=Stock@12345",
+  "xconnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=STOCK;Trusted_Connection=false;Persist Security Info=True;User ID=Stock;Password=Stock@12345",
+  "connectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=STOCK;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
   "Logging": {
     "IncludeScopes": false,
     "LogLevel": {

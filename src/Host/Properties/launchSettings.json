@@ -2,6 +2,9 @@
   "profiles": {
     "Host": {
       "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }

@@ -30,10 +30,10 @@ namespace GenericHost.Events
             _appLifetime.ApplicationStopping.Register(OnStopping);
             _appLifetime.ApplicationStopped.Register(OnStopped);
 
-            Task.Run(async () => 
-            { 
-                await this._gatewayServiceProvider.Get<IStockMonitorService>().Validate();
-            }).Wait();
+            //Task.Run(async () => 
+            //{ 
+            //    await this._gatewayServiceProvider.Get<IStockMonitorService>().Validate();
+            //}).Wait();
 
             _timerProcess = new Timer(CaptureStockData, null, TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(30));
 
