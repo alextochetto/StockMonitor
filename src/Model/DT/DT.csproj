@@ -6,8 +6,4 @@
     <RootNamespace>Stock.DT</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Stock\" />
-  </ItemGroup>
-
 </Project>

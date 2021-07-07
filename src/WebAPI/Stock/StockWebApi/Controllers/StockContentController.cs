@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Stock.Contract.GatewayContract;
 using Stock.Contract.StockContract;
+using Stock.DT.Stock;
 using Stock.VO.Stock;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,26 @@ namespace StockWebApi.Controllers
             catch (Exception e)
             {
                 return BadRequest(e); 
+            }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult> Save([FromBody] StockQuoteSaveDTQ stockQuoteSaveQuery)
+        {
+            try
+            {
+                bool saved = await this._gatewayServiceProvider.Get<IStockQuoteService>().Save(stockQuoteSaveQuery);
+                if (!saved)
+                    return BadRequest(saved);
+
+                return Ok(saved);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
             }
         }
     }

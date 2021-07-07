@@ -1,4 +1,5 @@
 ﻿using Stock.Contract.StockRepositoryContract;
+using Stock.DT.Stock;
 using Stock.Infrastructure.RepositoryContract;
 using Stock.VO.Stock;
 using System;
@@ -48,6 +49,15 @@ namespace Stock.Repository.StockRepositorySqlServer
             {
                 return null;
             }
+        }
+
+        public async Task<bool> Save(StockQuoteSaveDTQ stockQuoteSaveQuery)
+        {
+            Quote quote = new Quote();
+            quote.Tick = stockQuoteSaveQuery.Tick;
+            quote.CompanyName = stockQuoteSaveQuery.CompanyName;
+
+            return true;
         }
 
         #region Upgrade

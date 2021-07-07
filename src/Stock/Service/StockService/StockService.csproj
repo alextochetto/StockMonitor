@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Gateway\Contract\GatewayContract\GatewayContract.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\Configuration\Contract\ConfigurationContract\ConfigurationContract.csproj" />
+    <ProjectReference Include="..\..\..\Model\DT\DT.csproj" />
     <ProjectReference Include="..\..\..\Model\VO\VO.csproj" />
     <ProjectReference Include="..\..\Contract\StockContract\StockContract.csproj" />
     <ProjectReference Include="..\..\Contract\StockRepositoryContract\StockRepositoryContract.csproj" />
