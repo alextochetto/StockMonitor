@@ -45,10 +45,15 @@ namespace StockWebApi.Controllers
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
-        public async Task<ActionResult> Save([FromBody] StockQuoteSaveDTQ stockQuoteSaveQuery)
+        public async Task<ActionResult> Save([FromQuery] int? code, [FromBody] StockQuoteSaveDTQ stockQuoteSaveQuery)
         {
             try
             {
+                if (stockQuoteSaveQuery is null)
+                    return BadRequest(stockQuoteSaveQuery);
+
+                stockQuoteSaveQuery.Code = code;
+
                 bool saved = await this._gatewayServiceProvider.Get<IStockQuoteService>().Save(stockQuoteSaveQuery);
                 if (!saved)
                     return BadRequest(saved);
