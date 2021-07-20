@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Gateway\Infrastructure\GatewayLocator\GatewayLocator.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\Locator\InfrastructureLocator\InfrastructureLocator.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\Security\Extension\ExtensionSecurity\ExtensionSecurity.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\Security\JwtLocator\JwtLocator.csproj" />
     <ProjectReference Include="..\..\..\Model\DT\DT.csproj" />
     <ProjectReference Include="..\..\..\Stock\Infrastructure\StockLocator\StockLocator.csproj" />
   </ItemGroup>

@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Stock.Infrastructure.Security.JwtLocator;
+using Stock.Infrastructure.Security.SecurityExtension;
 
 namespace StockWebApi
 {
@@ -30,7 +25,12 @@ namespace StockWebApi
 
             services.AddInfrastructureServiceLocator();
             services.AddGatewayServiceLocator();
+            services.ConfigureJwtService();
+            services.AddJwtAuthentication(Configuration);
+            services.AddJwtAuthorization();
             services.AddStockServiceLocator();
+
+            services.Configure<BearerSecurityKey>(Configuration.GetSection(nameof(BearerSecurityKey)));
 
             services.AddSwaggerGen(c =>
             {
@@ -52,6 +52,8 @@ namespace StockWebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

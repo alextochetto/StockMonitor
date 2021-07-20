@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Stock.Infrastructure.Security.JwtAuthorization</AssemblyName>
+    <RootNamespace>Stock.Infrastructure.Security.JwtAuthorization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Gateway\Contract\GatewayContract\GatewayContract.csproj" />
+    <ProjectReference Include="..\..\Configuration\Contract\ConfigurationContract\ConfigurationContract.csproj" />
+    <ProjectReference Include="..\..\Contract\InfrastructureContract\InfrastructureContract.csproj" />
+    <ProjectReference Include="..\Extension\ExtensionSecurity\ExtensionSecurity.csproj" />
+  </ItemGroup>
+
+</Project>
