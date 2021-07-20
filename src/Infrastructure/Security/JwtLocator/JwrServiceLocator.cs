@@ -11,5 +11,10 @@ namespace Stock.Infrastructure.Security.JwtLocator
         {
             services.AddSingleton<IJwtAuthorizationService, JwtAuthorizationService>();
         }
+
+        public static void ConfigureJwtServiceScoped(this IServiceCollection services)
+        {
+            services.AddScoped<IJwtAuthorizationService, JwtAuthorizationService>();
+        }
     }
 }

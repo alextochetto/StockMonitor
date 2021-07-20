@@ -17,5 +17,14 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IStockContentRepository, StockContentRepositorySqlServer>();
             return services;
         }
+
+        public static IServiceCollection AddStockServiceLocatorScoped(this IServiceCollection services)
+        {
+            services.AddScoped<IStockHtmlAgilityPackService, StockHtmlAgilityPackService>();
+            services.AddScoped<IStockMonitorService, StockMonitorService>();
+            services.AddScoped<IStockQuoteService, StockQuoteService>();
+            services.AddScoped<IStockContentRepository, StockContentRepositorySqlServer>();
+            return services;
+        }
     }
 }

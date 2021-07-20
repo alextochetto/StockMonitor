@@ -13,5 +13,12 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IRepository, RepositorySqlServer>();
             return services;
         }
+
+        public static IServiceCollection AddInfrastructureServiceLocatorScoped(this IServiceCollection services)
+        {
+            services.AddScoped<IConfigurationServiceProvider, ConfigurationServiceProvider>();
+            services.AddScoped<IRepository, RepositorySqlServer>();
+            return services;
+        }
     }
 }

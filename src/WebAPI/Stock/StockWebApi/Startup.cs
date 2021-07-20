@@ -23,12 +23,12 @@ namespace StockWebApi
         {
             services.AddControllers();
 
-            services.AddInfrastructureServiceLocator();
-            services.AddGatewayServiceLocator();
-            services.ConfigureJwtService();
+            services.AddInfrastructureServiceLocatorScoped();
+            services.AddGatewayServiceLocatorScoped();
+            services.ConfigureJwtServiceScoped();
             services.AddJwtAuthentication(Configuration);
             services.AddJwtAuthorization();
-            services.AddStockServiceLocator();
+            services.AddStockServiceLocatorScoped();
 
             services.Configure<BearerSecurityKey>(Configuration.GetSection(nameof(BearerSecurityKey)));
 

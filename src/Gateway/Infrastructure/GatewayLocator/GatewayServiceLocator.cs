@@ -12,5 +12,11 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IGatewayServiceProvider, GatewayServiceProvider>();
             return services;
         }
+
+        public static IServiceCollection AddGatewayServiceLocatorScoped(this IServiceCollection services)
+        {
+            services.AddScoped<IGatewayServiceProvider, GatewayServiceProvider>();
+            return services;
+        }
     }
 }
